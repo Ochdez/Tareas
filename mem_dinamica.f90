@@ -1,6 +1,5 @@
 program mem_dinamica
 
-!TAREA
   implicit none
   integer :: l,m,n,q,d,s,p,i,j,k
   real, allocatable, dimension(:,:) :: x,y,z
@@ -19,6 +18,22 @@ program mem_dinamica
   allocate(y(1:q,1:n))
   allocate(z(1:l,1:n))
 
+  print*,'Ingrese los elementos de la primer matriz: '
+  do i = 1, l
+     do j = 1, m
+       read(*,*)s
+       x(i,j) = s
+     end do
+  end do
+
+
+  print*,'ingrese los elementos de sus segunda matriz: '
+  do i=1, q
+     do j=1, n
+       read(*,*)p
+       y(i,j) = p
+     end do
+  end do
 
   print*,'¿Desea realizar suma o producto? Ingrese 1 si desea suma y cualquier otro entero si desea producto'
   read(*,*)d
@@ -30,55 +45,17 @@ program mem_dinamica
 
     else
 
-        print*,'Ingrese los elementos de la primer matriz: '
-        do i = 1, l
-           do j = 1, m
-             read(*,*)s
-             x(i,j) = s
-           end do
-        end do
-
-
-        print*,'ingrese los elementos de sus segunda matriz: '
-        do i=1, q
-           do j=1, n
-             read(*,*)p
-             y(i,j) = p
-           end do
-        end do
-
-        allocate(z(1:l,1:n))
         z = x + y
         print*,'La suma es: ',z
     end if
 
 
-  else
-
-     z = 0
+ else
 
      if (m /= q) then
         print*,'No es posible realizar el producto.'
 
      else
-
-        print*,'Ingrese los elementos de su primer matriz: '
-        do i=1, l
-           do j=1,m
-              read(*,*)s
-              x(i,j)=s
-           enddo
-        enddo
-
-         print*,'ingrese los elementos de sus segunda matriz: '
-        do i=1, q
-           do j=1, n
-             read(*,*)p
-             y(i,j) = p
-           end do
-        end do
-
-
 
         print*,'El producto de sus matrices es: '
         do i = 1, l
