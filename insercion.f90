@@ -10,25 +10,28 @@ program insercion
     read(10,*)h,a
     M(i) = a
   enddo
-  close(10)
-
-  a = 0
 
   do i=2,10  !elemento que se quiere ordenar adecuadamente
-    a = M(i)
+    a = M(i) !Recuerda el valor que se va a comparar
     j = i-1
-    do while (M(j) > a .and. j>0)
-      M(j+1) = M(j)  !Hace el desplazamiento
-      !M(i) = a
-      j=j-1
-       if (j==0) exit
-    enddo
-    M(j+1) = a
+    do while (M(j) < a .and. j>0 ) !Va comparando "a" con los elementos anteriores.
+      M(j+1) = M(j)  !Hace el desplazamiento si se cumplen las condiciones.
+      j=j-1 !Va reduciendo j hasta llegar a cero
+    enddo     !Al no darse la condición el valor del i inicial guardado en a se coloca en
+    M(j+1) = a !Hace el cambio. El moyor correspondera al primer elemento. j=1
   enddo
 
   do i=1,10
     print*,M(i)
   enddo
 
+  open(20,file="orden_insercion.dat")
+  do i=1,10
+    a = M(i)
+    write(20,*)i,a
+  enddo
+
+  close(10)
+  close(20)
 
 end program insercion
