@@ -17,9 +17,9 @@ program ordenamiento
   do i=1,10
     do j=1,10
       if (M(i) > M(j)) then
-        a = M(i)
-        M(i) = M(j)
-        M(j) = a
+        a = M(i) !Recuerda el mayor
+        M(i) = M(j) !Manda el menor una posición anterior. Ahora el pivote será el menor de los dos numeros.
+        M(j) = a !La posicion que antes era del menor le corresponde al mayor
       endif
     enddo
   enddo
