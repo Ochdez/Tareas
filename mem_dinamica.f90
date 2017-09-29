@@ -10,14 +10,12 @@ program mem_dinamica
   read(*,*)l
   print*,'Ingrese las columnas que tendra su primer matriz: '
   read(*,*)m
-  allocate(x(1:l,1:m))
-  print*,'Ingrese las filas que tendra su segunda matriz'
+   print*,'Ingrese las filas que tendra su segunda matriz'
   read(*,*)q
   print*,'Ingrese las columnas que tendra su segunda matriz'
   read(*,*)n
-  allocate(y(1:q,1:n))
-  allocate(z(1:l,1:n))
-
+  allocate(x(1:l,1:m),y(1:q,1:n),z(1:l,1:n))
+  
   print*,'Ingrese los elementos de la primer matriz: '
   do i = 1, l
      do j = 1, m
