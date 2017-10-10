@@ -2,20 +2,21 @@ program grafica
 
   !implicit none
   integer :: m,n,p
-  real(8) :: pi,l,xmax
+  real(8) :: pi,l,xmax, xmin
   real, allocatable, dimension(:) :: f, x
 
   pi = acos(-1.0)
-  print*,"Ingrese x minima"
+  print*,"Ingrese un entero multiplo de PI para x minima"
   read(*,*)m
-  print*,"Ingrese un entero multiplo de PI"
+  print*,"Ingrese un entero multiplo de PI para x maxima"
   read(*,*)n
   print*,"Ingrese el numero de puntos"
   read(*,*)p
   allocate(x(0:p),f(0:p))
-
+  
+  xmax = m*pi
   xmax = n*pi
-  l = (xmax-m)/p
+  l = (xmax-xmin)/p
 
   do i =0, p
     x(i) = m + (i*l)
