@@ -5,7 +5,6 @@ program main
   real(8), allocatable, dimension(:) :: y,z,f
   integer :: p,h,a,b
 
-  pi = acos(-1.0)
   print*,"Ingrese el punto a"
   read(*,*)a
   print*,"Ingrese el punto b"
