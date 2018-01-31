@@ -1,9 +1,9 @@
 program main
 
   !implicit none
-  real(8) :: pi, dx, xmax, xmin
-  real(8), allocatable, dimension(:) :: y,z,d,f
-  integer :: m,n,p,r,h,area
+  real(8) :: pi, dx, xmax, xmin,area, integral
+  real(8), allocatable, dimension(:) :: y,z,f
+  integer :: p,h,a,b
 
   pi = acos(-1.0)
   print*,"Ingrese el punto a"
@@ -27,7 +27,8 @@ program main
   print*,"=",z
 
   area = 0
-  call fsub2(z,n,dx)
+  call fsub2(z,n,dx,integral)
+  print*,"integral=", integral
 
 
 end program main
@@ -41,14 +42,13 @@ end program main
 
   end subroutine
 
-  subroutine fsub2(x,n,dx,area)
+  subroutine fsub2(w,n,dx,area)
     integer, intent(in) :: n
     real(8), intent(in) :: dx
-    real(8), dimension(n), intent(x)
-    real(8), dimension(n), intent(area)
-
-    do i=0,n
-      if (z(i)=b) then
-      area = area + dx*(z(i+1))
-      endif
+    real(8), intent(out) :: area!!!!!!
+    real(8), dimension(n), intent(in) :: w 
+    
+    do i=0,(n-1)
+        area = area+(dx*w(i))
     enddo
+  end subroutine  
