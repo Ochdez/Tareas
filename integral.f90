@@ -31,6 +31,12 @@ program main
 
   call fsub1(y,n,z)
   print*,"=",z
+  
+  open(20,file="Funcion.dat")
+    do i=0,n
+	write(20,*)y(i),z(i)
+    enddo
+  close(20)
 
   
   call fsub2(z,n,dx,integral)
