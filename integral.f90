@@ -35,6 +35,10 @@ program main
   
   call fsub2(z,n,dx,integral)
   print*,"integral=", integral
+  
+  open(10,file="datos.dat")
+	write(10,*)h,integral
+  close(10)
 
 
 end program main
