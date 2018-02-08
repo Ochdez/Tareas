@@ -11,7 +11,7 @@ program main
    print*,"Ingrese numero de puntos entre a y b: "
    read(*,*)h
    p=h+1
-   allocate(x(0:P),z(0:p),f(0:p))!,cero(0:b))
+   allocate(x(0:P),z(0:p))
 
    dx = (b-a)/p
  
@@ -59,13 +59,12 @@ subroutine fsub2(y,n,m,f)
    real(8), dimension(0:n), intent(in) :: y
    real(8), dimension(0:n), intent(in) :: f 
    	
-   do i=0,n-1
-   	if ((f(i)*f(i+1))<=0) then
-   		if (f(i)<f(i+1) .or. f(i)>f(i+1)) then
-   			m=(y(i)+((y(i+1)-y(i))*(-f(i)))/(f(i+1)-f(i)))
-   		endif
+   do i=0,n
+   	if ((f(i)*f(i+1))<0) then
+   		m=((y(i+1)-y(i))*(-f(i))/(f(i+1)-f(i)))+y(i)
+   		print*,f(i)," ",f(i+1)
    	endif
-   enddo 	
+   enddo
    	
 
 end subroutine
