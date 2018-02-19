@@ -45,6 +45,8 @@ program main
   print*,bn
 
   do i=0,p
+    w(i)=0
+    m(i)=0
     do j=1,10
       w(i) = (an(j)*cos(j*pi*x(i)/l))+w(i)
       m(i) = (bn(j)*sin(j*pi*x(i)/l))+m(i)
