@@ -9,7 +9,7 @@ program main
   read(*,*)h
   p=h+1
   l=pi
-  allocate(x(0:p),f(0:p),an(1:10),bn(1:10),w(0:p),m(0:p),g(0:p))
+  allocate(x(0:p),f(0:p),an(1:1000),bn(1:1000),w(0:p),m(0:p),g(0:p))
 
   pi = acos(-1.0)
   dx = (2*l/p)
@@ -20,7 +20,13 @@ program main
 
   open(10,file="fun.dat")
   do i=0, p
-    f(i)=3
+    if (x(i) <= -2)then
+      f(i) = 0
+    else if (x(i) > -2 .and. x(i)<2) then
+      f(i) = 3
+    else if (x(i) > 2) then
+      f(i) = -3
+    endif
     write(10,*)i,f(i)
   enddo
   close(10)
@@ -30,7 +36,7 @@ program main
   enddo
   print*,"a: ",a
 
-  do i=1,10
+  do i=1,1000
     do j=0,p
 
       an(i)=(((f(j)*cos(i*pi*x(j)/l))/l)*dx)+an(i)
@@ -47,7 +53,7 @@ program main
   do i=0,p
     w(i)=0
     m(i)=0
-    do j=1,10
+    do j=1,1000
       w(i) = (an(j)*cos(j*pi*x(i)/l))+w(i)
       m(i) = (bn(j)*sin(j*pi*x(i)/l))+m(i)
     enddo
